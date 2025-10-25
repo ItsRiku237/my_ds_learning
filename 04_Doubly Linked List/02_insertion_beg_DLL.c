@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node{
+    struct node *prev;
+    int data ;
+    struct node *next;
+};
+
+struct node *add_to_empty(struct node *head,int data){
+    struct node *temp = (struct node*)malloc(sizeof(struct node));
+    temp->prev = NULL;
+    temp->data = data;
+    temp->next = NULL;
+    head = temp;
+
+    return head;
+}
+
+struct node *add_at_beg(struct node *head,int data){
+    struct node *temp = (struct node*)malloc(sizeof(struct node));
+    temp->prev = NULL;
+    temp->data = data;
+    temp->next = NULL;
+
+    temp->next = head;
+    head->prev = temp;
+    
+    return temp;
+}
+
+int main(){
+    struct node *head = (struct node*)malloc(sizeof(struct node));
+    head = add_to_empty(head,10);
+    head = add_at_beg(head,20);
+    head = add_at_beg(head,30);
+    head = add_at_beg(head,40);
+    head = add_at_beg(head,50);
+
+    struct node *ptr;
+    ptr = head;
+    while (ptr != NULL)
+    {
+        printf("%d ",ptr->data);
+        ptr = ptr->next;
+    }
+    
+    return 0;
+}
