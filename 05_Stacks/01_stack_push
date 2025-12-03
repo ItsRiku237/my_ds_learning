@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+#define MAX 5
+int stack_arr[MAX];
+int top = -1;
+
+void push(int data){
+    if(top == MAX-1){
+        printf("Stack is Overflow !!");
+        return;
+    }
+    top++;
+    stack_arr[top] = data;
+}
+
+int main(){
+   push(5); 
+   push(10); 
+   push(15); 
+   push(20); 
+   push(25); 
+   push(30); 
+    return 0;
+}
