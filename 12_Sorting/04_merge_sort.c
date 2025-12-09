@@ -1,0 +1,56 @@
+#include <stdio.h>
+
+void merge_sort(int arr1[], int arr2[], int arr3[], int n1, int n2)
+{
+    int i = 0;
+    int j = 0;
+    int k = 0;
+    while (i < n1 && j < n2)
+    {
+        if (arr1[i] < arr2[j])
+        {
+            arr3[k++] = arr1[i++];
+        }
+        else
+        {
+            arr3[k++] = arr2[j++];
+        }
+    }
+    while (i < n1)
+    {
+        arr3[k++] = arr1[i++];
+    }
+    while (j < n2)
+    {
+        arr3[k++] = arr2[j++];
+    }
+}
+
+int main()
+{
+    int n1, n2;
+    printf("Enter number of 1st array element : ");
+    scanf("%d", &n1);
+    int arr1[n1];
+    for (int i = 0; i < n1; i++)
+    {
+        printf("Enter element for 1st array : ");
+        scanf("%d", &arr1[i]);
+    }
+    printf("Enter number of 2nd array element : ");
+    scanf("%d", &n2);
+    int arr2[n2], arr3[n1 + n2];
+    for (int i = 0; i < n2; i++)
+    {
+        printf("Enter element for 2nd array : ");
+        scanf("%d", &arr2[i]);
+    }
+    printf("Merge sort of enter array (Acending order): ");
+    merge_sort(arr1, arr2, arr3, n1, n2);
+    for (int i = 0; i < n1 + n2; i++)
+    {
+        printf("%d ", arr3[i]);
+    }
+
+    return 0;
+}
